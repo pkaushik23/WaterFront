@@ -1,0 +1,5 @@
+- remove prefixed in the anngular.json, so that prefix deos not come when doing, ng g component xyz, for example. 
+- add a file baseStyle.scss, to move styles from app app,component.html's *style* tag to baseStyle.scss. Added the same to options.styles of angular.json
+- preserved startup template of app.component as app.component.backup.html
+- In angualar.json, in scripts section of options, added dummy dependency of jquery to check the external lib bundle.
+- Added a dummy *library project*, called DummsLib to the project

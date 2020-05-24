@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -28,9 +28,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/baseStyles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              { "input": "./node_modules/jquery/dist/jquery.min.js"}
+            ]
           },
           "configurations": {
             "production": {
@@ -121,6 +124,41 @@
             "production": {
               "devServerTarget": "WaterFront:serve:production"
             }
+          }
+        }
+      }
+    },
+    "DummsLib": {
+      "projectType": "library",
+      "root": "projects/dumms-lib",
+      "sourceRoot": "projects/dumms-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/dumms-lib/tsconfig.lib.json",
+            "project": "projects/dumms-lib/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dumms-lib/src/test.ts",
+            "tsConfig": "projects/dumms-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/dumms-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/dumms-lib/tsconfig.lib.json",
+              "projects/dumms-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

@@ -17,7 +17,21 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "dumms": [
+        "dist/dumms"
+      ],
+      "dumms/*": [
+        "dist/dumms/*"
+      ],
+      "dumms-lib": [
+        "dist/dumms-lib"
+      ],
+      "dumms-lib/*": [
+        "dist/dumms-lib/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
