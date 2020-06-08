@@ -1,1 +1,15 @@
-<p>home works! This is a home page</p>
+
+<div class="card-container">
+    <mat-card *ngIf="!loginSvc.isUserLoggedIn()"> 
+        <button mat-raised-button (click)="initLogin()">Login</button>
+    </mat-card>
+    <mat-card *ngIf="loginSvc.isUserLoggedIn()"> 
+        <mat-label>Hello {{loginSvc.userInfo.name}} [ logged in via {{loginSvc.userInfo.idp}} ]</mat-label>
+        <button mat-button (click)="logout()">Logout</button>
+    </mat-card>
+</div>
+<div class="card-container">
+    <p>This is a home page</p>
+</div>
+
+

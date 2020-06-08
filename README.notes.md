@@ -3,6 +3,12 @@
 - preserved startup template of app.component as app.component.backup.html
 - In angualar.json, in scripts section of options, added dummy dependency of jquery to check the external lib bundle.
 - Added a dummy *library project*, called DummsLib to the project
-- Added Material design library to the project.
-- Also add routing to the application.
--
+- Added **Material design** library to the project.
+- Also add **routing** to the application.
+- Made changes to some routes.
+- Added **Notificaton Service**
+- Added infra code for **login functionality**. 
+    - add login button, show popup
+    - Added **login service**
+    - Added route guard for **Authorization**
+    - 
