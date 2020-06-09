@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { LoginService } from 'src/app/auth/services/login.service';
 import { IdentityProvider } from 'src/app/models/auth.constants';
+import { Router } from '@angular/router';
+import { ApplicationPaths } from 'src/app/models/app.constants';
 
 
 @Component({
@@ -11,7 +13,7 @@ import { IdentityProvider } from 'src/app/models/auth.constants';
 })
 export class LoginListComponent implements OnInit {
 
-  constructor( public dialogRef: MatDialogRef<LoginListComponent>, public loginSvc:LoginService ) {}
+  constructor( public dialogRef: MatDialogRef<LoginListComponent>, public loginSvc:LoginService, private route:Router ) {}
 
   ngOnInit() {
   }
@@ -23,6 +25,7 @@ export class LoginListComponent implements OnInit {
   doFacebookLogin():void{
     this.loginSvc.login(IdentityProvider.Facebook);
     this.dialogRef.close();
+    //this.route.navigate([ApplicationPaths.Dashboard]);
   }
 
   doTwitterLogin():void{
