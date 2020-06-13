@@ -4,7 +4,7 @@
         <button mat-raised-button (click)="initLogin()">Login</button>
     </mat-card>
     <mat-card *ngIf="loginSvc.isUserLoggedIn()"> 
-        <mat-label>Hello {{loginSvc.userInfo.name}} [ logged in via {{loginSvc.userInfo.idp}} ]</mat-label>
+        <mat-label>Hello {{loginSvc.userInfo.name}} [ logged in via {{loginSvc.userInfo.provider}} ]</mat-label>
         <button mat-button (click)="logout()">Logout</button>
     </mat-card>
 </div>

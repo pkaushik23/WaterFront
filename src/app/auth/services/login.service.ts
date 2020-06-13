@@ -1,26 +1,38 @@
 import { Injectable } from '@angular/core';
 import { LoginProviders, IdentityProvider } from 'src/app/models/auth.constants';
+import {AuthorizedUser} from 'src/app/models/auth-user'
+import { AuthService } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor() { }
-
-  _userInfo: {idp:IdentityProvider,isLoggedIn:boolean, name:string};
+  constructor(private authService: AuthService) {
+    this.setLoginSubscription();
+   }
+   _userInfo: AuthorizedUser;
 
   get userInfo(){
     return this._userInfo;
   }
-
   set userInfo(val){
     this._userInfo = val;
   }
 
+   private setLoginSubscription(){
+    this.authService.authState.subscribe((user) => {
+      console.log(user,'setLoginSubscription');
+      if(user){
+        this.userInfo = new AuthorizedUser(user);
+      }
+    });
+   }
+
   public isUserLoggedIn(){
     if(this.userInfo)
-      return this.userInfo.isLoggedIn
+      return this.userInfo.isLoggedIn;
     else
       return false; 
   }
@@ -28,8 +40,7 @@ export class LoginService {
   public login(provider: IdentityProvider):void {
     switch (provider) {
       case LoginProviders.Facebook:
-        console.log(provider);
-        this.userInfo = {isLoggedIn : true, idp : provider, name:'Dumms'};
+        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
         break;
       default:
         alert('not implemented');
@@ -37,13 +48,10 @@ export class LoginService {
     }
   }
 
-  public logout(): boolean{
-    let result = false;
-    if(this.userInfo){
-      this.userInfo = null;
-      result = true;
-    }
-    return result;
-
+  public logout(){
+    this.authService.signOut()
+    .then((v)=>{
+      this._userInfo = null;
+    });
   }
 }

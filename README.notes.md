@@ -11,4 +11,6 @@
     - add login button, show popup
     - Added **login service**
     - Added route guard for **Authorization**
-    - 
+    - Added module *angularx-social-login* for social login: npm install --save angularx-social-login
+    - Implemented **FB login**.
+

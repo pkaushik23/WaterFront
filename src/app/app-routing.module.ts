@@ -14,8 +14,6 @@ const routes:Routes = [
 
   { path: '', component: HomeComponent},//, pathMatch: 'full'
   { path: 'home', component: HomeComponent},
-  
-  //else
   { path: 'dashboard', component: DashboardComponent,canActivate:[AuthorizeGuard] },
   { path: 'profile', component: ProfileComponent},
   { path: 'tools', component: ToolsComponent},
